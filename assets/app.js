@@ -15,7 +15,7 @@ for(var i = 0; i < preSelected.length; i++){
 //load the trending and random giphs in their own divs.
 //trending
 $.ajax({
-    url: "http://api.giphy.com/v1/gifs/trending?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&limit=12&rating=PG-13",
+    url: "https://api.giphy.com/v1/gifs/trending?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&limit=12&rating=PG-13",
     method: "GET"
 }).then(function(response){
     console.log(response);
@@ -70,7 +70,7 @@ $(document).on("click", "#add-Giphy", function(){
     //doesn't let you make duplicate buttons, but still puts that query on top.
     } else{
         $.ajax({
-            url: `http://api.giphy.com/v1/gifs/search?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&q=${submission}&limit=10&offset=0&rating=PG-13&lang=en`,
+            url: `https://api.giphy.com/v1/gifs/search?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&q=${submission}&limit=10&offset=0&rating=PG-13&lang=en`,
            method: "GET"
         
         }).then(function(response){
