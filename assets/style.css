@@ -1,9 +1,13 @@
-/* *{
-border: red solid 1px;
-} */
+*{
+font-family: 'Open Sans', sans-serif;
+text-transform: uppercase;
+letter-spacing: .07em;
+/* border-radius: 5%; */
+/* border: red solid 1px; */
+}
 
 body{
-    background-color: #18121E;
+    background-color: #FE424D;
     display: flex;
     flex: auto;
 
@@ -16,18 +20,18 @@ main{
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    background-color: #984B43;
+    background-color: #1AA6B7;
 }
 
 header{
-    background-color:   #EAC67A;
-    color: #984B43;
+    background-color:   #022D41;
+    color: #1AA6B7;
     align-content: center;
     justify-content: center;
     display: flex;
     flex: auto;
     top: 0;
-    width: 85%;
+    width: 100%;
     margin: auto;
     
 }
@@ -41,11 +45,19 @@ header{
     flex-wrap: wrap;
     /* flex-grow: 10; */
     justify-content: space-evenly;
-    background: #233237;
+    background: #DAECF3;
     align-content: flex-start;
+    min-height: 80%
 
 }
 
+button{
+    height: 70px;
+}
+form{
+    color: #1AA6B7;
+    font-weight: bolder;
+}
 
 .giphyContainerBox{
     display: flex;
@@ -55,8 +67,20 @@ header{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background: #984B43;
+    background: #1AA6B7;
 }
+
+.selectedButtonsContainer{
+    display: flex;
+    width: 100%;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background: #1AA6B7;
+}
+
 .imgBox{
     max-width: 100%;
 }
@@ -68,9 +92,40 @@ header{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
-    background: #984B43;
+    background: #1AA6B7;
     flex: auto;
     top: 0;
+}
+
+.containerofButtons{
+    display: flex;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    background: #DAECF3;
+    flex: auto;
+    color: #022D41;
+}
+
+label{
+    background: #DAECF3;
+    color: #022D41;
+}
+
+.BtnHeader{
+    background-color:   #022D41;
+    color: #1AA6B7;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex: auto;
+    top: 0;
+    width: 100%;
+    margin: auto;
+    
 }
 
 footer{
@@ -78,7 +133,7 @@ footer{
     flex: auto;
     bottom: 0;
     justify-content: center;
-    background: #EAC67A;
+    background: #022D41;
     width: 85%;
     margin: auto;
 }
@@ -91,8 +146,8 @@ footer{
     justify-content: space-evenly;
 }
 button{
-    background: #18121E;
-    color: #EAC67A;
+    background: #FE424D;
+    color: #022D41;
 
 }
 
@@ -101,3 +156,8 @@ button{
 .color-primary-1 { color: #233237 }
 .color-primary-2 { color: #984B43 }
 .color-primary-3 { color: #EAC67A }
+
+.color-primary-0 { color: #FE424D }	
+.color-primary-1 { color: #DAECF3 }
+.color-primary-2 { color: #022D41 }
+.color-primary-3 { color: #1AA6B7 }
