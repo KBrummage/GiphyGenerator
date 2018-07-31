@@ -2,6 +2,7 @@
 font-family: 'Open Sans', sans-serif;
 text-transform: uppercase;
 letter-spacing: .07em;
+/* color: aliceblue; */
 /* border-radius: 5%; */
 /* border: red solid 1px; */
 }
@@ -51,8 +52,15 @@ header{
 
 }
 
+img{
+    margin: 10px;
+}
+
 button{
     height: 70px;
+    border-radius: 12px;
+    padding: 10px 24px;
+    color: aliceblue!important;
 }
 form{
     color: #1AA6B7;
