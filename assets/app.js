@@ -1,6 +1,24 @@
 var preSelected = ["Trending", "Random"];
 var history = [];
 var selectedGiphs = [];
+// switch to still image
+// $(document).on("click", "img", function(){
+//     console.log(this);
+//     var dataState = $(this).attr("data-state");
+//     console.log(dataState);
+//     var dataAnimate = $(this).attr("data-animate");
+//     var dataStill = $(this).attr("data-still");
+    
+//     if(dataState === "animate"){
+//        $(this).attr("src", dataStill);
+//        $(this).attr("data-state", "still")
+//     }
+//     else{
+//         $(this).attr("src", dataAnimate);
+//         $(this).attr("data-state", "animate");
+//     }
+   
+// })
 
 $(document).ready(function(){
 
@@ -8,8 +26,6 @@ $(document).ready(function(){
 //make all the buttons
 for(var i = 0; i < preSelected.length; i++){
     $(".selectedButtonsContainer").append(`<button id=${preSelected[i]}>${preSelected[i]}</button>`);
-    
-
 }
 
 //load the trending and random giphs in their own divs.
@@ -31,13 +47,7 @@ for (var i = 0; i < 12; i++){
 $.ajax({
     url: "https://api.giphy.com/v1/gifs/random?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&tag=&rating=PG-13",
     method: "GET"
-}).then(function(response){
-    // console.log(response);
-    // console.log(response.data[0]);
-    // console.log(response.data.url);
-    // console.log(response.data.embed_url);
-
-    
+}).then(function(response){    
     $(".randomGiphyContainer").append(`<img src="${response.data.images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data.images.original_still.url}" data-animate="${response.data.images.original.url}" data-state="animate"></img>`)
     
 })
@@ -97,10 +107,10 @@ $(document).on("click", "#add-Giphy", function(){
         $(this).attr("src", dataStill);
         $(this).attr("data-state", "still")
      }
-     else{
-         this.attr("src", dataAnimate);
-         this.attr("data-state", "animate");
-     }
+    //  else{
+    //      $(this).attr("src", dataAnimate);
+    //      $(this).attr("data-state", "animate");
+    //  }
     
  })
     
