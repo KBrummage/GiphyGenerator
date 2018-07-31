@@ -4,10 +4,11 @@ var selectedGiphs = [];
 
 $(document).ready(function(){
 
+
 //make all the buttons
 for(var i = 0; i < preSelected.length; i++){
-    $(".preselectedButtons").append(`<div><button type='button' class='btn btn-primary' value='${preSelected[i]}'>${preSelected[i]}</button></div>`);
-    // console.log(preSelected[i]);
+    $(".selectedButtonsContainer").append(`<button id=${preSelected[i]}>${preSelected[i]}</button>`);
+    
 
 }
 
@@ -43,8 +44,17 @@ $.ajax({
 }
 
 //how to make a search query
-$(document).on("click", "#add-Giphy", function(){    
-    var submission = $("#giphy-input").val();
+$(document).on("click", "#add-Giphy", function(){  
+    if($("#giphy-input").val().trim() !== ""){  
+    var tempsubmission = $("#giphy-input").val().trim();
+    var submission = "";
+    submissionArray = tempsubmission.split("");
+    for(var i=0; i < submissionArray.length; i++){
+        if (submissionArray[i] === " "){
+            submissionArray[i] = "-";
+        }
+        submission = submission + submissionArray[i];
+    }
     var dne = true;
     var versionofExistence = 0;
     for(var i = 0; i < selectedGiphs.length; i++){
@@ -56,7 +66,7 @@ $(document).on("click", "#add-Giphy", function(){
     //makes sure you haven't searched and made a button for it yet.
     if (dne === true){
         selectedGiphs.push(submission);
-        makeGiphyDiv(submission);
+        makeGiphyDiv(submission, tempsubmission);
     //doesn't let you make duplicate buttons, but still puts that query on top.
     } else{
         $.ajax({
@@ -64,7 +74,7 @@ $(document).on("click", "#add-Giphy", function(){
            method: "GET"
         
         }).then(function(response){
-            $(".giphyContainer").prepend(`<div class="${submission}${versionofExistence.toString()} container"><header><h2>${submission}</h2></header></div>`);
+            $(".giphyContainer").prepend(`<div class="${tempsubmission}${versionofExistence.toString()} container"><header><h2>${submission}</h2></header></div>`);
             for (var i = 0; i < response.data.length; i++){
                 $(`.${submission}${versionofExistence.toString()}`).append(`<img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" data-animate="${response.data[i].images.original.url}" data-state:"animate"></img>`)
             }
@@ -72,6 +82,7 @@ $(document).on("click", "#add-Giphy", function(){
         })
         
     }
+}
 })
 
 // switch to still image
@@ -96,15 +107,15 @@ $(document).on("click", "#add-Giphy", function(){
     
     
 //makeGiphyDiv Function
-function makeGiphyDiv(argument){
+function makeGiphyDiv(argument, BannerName){
     $.ajax({
         url: `http://api.giphy.com/v1/gifs/search?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&q=${argument}&limit=10&offset=0&rating=PG-13&lang=en`,
        method: "GET"
     
     }).then(function(response){
  
-        $(".selectedButtonsContainer").prepend(`<button id=${argument}>${argument}</button>`);
-        $(".giphyContainer").prepend(`<div class="${argument}Container container"><header><h2>${argument}</h2></header></div>`);
+        $(".selectedButtonsContainer").prepend(`<button id=${argument}>${BannerName}</button>`);
+        $(".giphyContainer").prepend(`<div class="${argument}Container container"><header><h2>${BannerName}</h2></header></div>`);
         for (var i = 0; i < response.data.length; i++){
             $(`.${argument}Container`).append(`<img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" data-animate="${response.data[i].images.original.url}" data-state="animate"></img>`)
         }

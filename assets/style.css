@@ -2,13 +2,10 @@
 font-family: 'Open Sans', sans-serif;
 text-transform: uppercase;
 letter-spacing: .07em;
-/* color: aliceblue; */
-/* border-radius: 5%; */
-/* border: red solid 1px; */
 }
 
 body{
-    background-color: #FE424D;
+    background-color: #1AA6B7;
     display: flex;
     flex: auto;
 
@@ -34,6 +31,8 @@ header{
     top: 0;
     width: 100%;
     margin: auto;
+    border-radius: 14px;
+    
     
 }
 
@@ -46,7 +45,7 @@ header{
     flex-wrap: wrap;
     /* flex-grow: 10; */
     justify-content: space-evenly;
-    background: #DAECF3;
+    background:#1AA6B7;
     align-content: flex-start;
     min-height: 80%
 
@@ -55,16 +54,40 @@ header{
 img{
     margin: 10px;
 }
-
+#giphy-input{
+    border-radius: 10px;
+    width: 95%;
+}
 button{
+    margin: 10px 0;
     height: 70px;
     border-radius: 12px;
     padding: 10px 24px;
     color: aliceblue!important;
+    background-color: #FE424D;
 }
-form{
-    color: #1AA6B7;
-    font-weight: bolder;
+
+.buttonContainer{
+    position: fixed;
+    width: inherit;
+    z-index: 100;
+    border: solid 2px;
+    border-radius: 12px;
+    margin: auto;
+    border: 6px solid #DAECF3
+}
+
+
+
+#giphy-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h2{
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
 }
 
 .giphyContainerBox{
@@ -76,6 +99,8 @@ form{
     flex-wrap: wrap;
     justify-content: space-evenly;
     background: #1AA6B7;
+    border-radius: 14px;
+    border: 6px solid #DAECF3;
 }
 
 .selectedButtonsContainer{
@@ -86,7 +111,9 @@ form{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background: #1AA6B7;
+    background: #DAECF3;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 
 .imgBox{
@@ -101,7 +128,7 @@ form{
     flex-wrap: wrap;
     justify-content: flex-start;
     background: #1AA6B7;
-    flex: auto;
+    flex: 0 0 auto;
     top: 0;
 }
 
@@ -149,15 +176,15 @@ footer{
 
 .preSelectedButtons{
     display: flex;
-    flex-direction: row;
+    width: 100%;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background: #1AA6B7;
 }
-button{
-    background: #FE424D;
-    color: #022D41;
 
-}
 
 
 .color-primary-0 { color: #18121E }	
