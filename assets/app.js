@@ -37,7 +37,7 @@ $.ajax({
     console.log(response);
     // console.log(response.data[0]);
     for (var i = 0; i < response.data.length; i++){
-    $(".trendingGiphyContainer").append(`<img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" data-animate="${response.data[i].images.original.url}" data-state="animate"></img>`)
+    $(".trendingGiphyContainer").append(`<div id="${i}"><img src="${response.data[i].images.original.url}" id="${i}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" data-animate="${response.data[i].images.original.url}" data-state="animate"></img></div>`)
 
     }
 })
@@ -86,7 +86,7 @@ $(document).on("click", "#add-Giphy", function(){
         }).then(function(response){
             $(".giphyContainer").prepend(`<div class="${tempsubmission}${versionofExistence.toString()} container"><header><h2>${submission}</h2></header></div>`);
             for (var i = 0; i < response.data.length; i++){
-                $(`.${submission}${versionofExistence.toString()}`).append(`<img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" data-animate="${response.data[i].images.original.url}" data-state:"animate"></img>`)
+                $(`.${submission}${versionofExistence.toString()}`).append(`<div id="${submission}"><img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" id="${submission}" data-animate="${response.data[i].images.original.url}" data-state:"animate"></img></div>`)
             }
     
         })
@@ -98,8 +98,10 @@ $(document).on("click", "#add-Giphy", function(){
 // switch to still image
  $(document).on("click", "img", function(){
      console.log(this);
+     uniqueID = $(this).attr("id");
+     console.log(uniqueID);
+
      var dataState = $(this).attr("data-state");
-     console.log(dataState);
      var dataAnimate = $(this).attr("data-animate");
      var dataStill = $(this).attr("data-still");
      
@@ -107,6 +109,8 @@ $(document).on("click", "#add-Giphy", function(){
         $(this).attr("src", dataStill);
         $(this).attr("data-state", "still")
      }
+
+     $(`#${uniqueID}.giphy-embed`).append('<p>Sample Paragraph</p>');
     //  else{
     //      $(this).attr("src", dataAnimate);
     //      $(this).attr("data-state", "animate");
@@ -127,7 +131,7 @@ function makeGiphyDiv(argument, BannerName){
         $(".selectedButtonsContainer").prepend(`<button id=${argument}>${BannerName}</button>`);
         $(".giphyContainer").prepend(`<div class="${argument}Container container"><header><h2>${BannerName}</h2></header></div>`);
         for (var i = 0; i < response.data.length; i++){
-            $(`.${argument}Container`).append(`<img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" data-animate="${response.data[i].images.original.url}" data-state="animate"></img>`)
+            $(`.${argument}Container`).append(`<div id="${argument}"<img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" id="${argument}" data-animate="${response.data[i].images.original.url}" data-state="animate"></img>`)
         }
 
     })
