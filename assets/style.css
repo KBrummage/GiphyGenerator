@@ -2,6 +2,7 @@
 font-family: 'Open Sans', sans-serif;
 text-transform: uppercase;
 letter-spacing: .07em;
+/* border: red solid 1px; */
 }
 
 body{
@@ -47,7 +48,6 @@ header{
     justify-content: space-evenly;
     background:#1AA6B7;
     align-content: flex-start;
-    min-height: 80%
 
 }
 
@@ -57,6 +57,13 @@ img{
 #giphy-input{
     border-radius: 10px;
     width: 95%;
+}
+
+.giphy-embed{
+    width: 240px;
+    height: 180px;
+    margin: 2px;
+    border: 2px;
 }
 button{
     margin: 10px 0;
@@ -93,14 +100,19 @@ h2{
 .giphyContainerBox{
     display: flex;
     width: 60%;
-    /* margin: auto; */
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
     background: #1AA6B7;
-    border-radius: 14px;
-    border: 6px solid #DAECF3;
+    /* border-radius: 14px;
+    border: 6px solid #DAECF3; */
+}
+
+.giphyContainer{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .selectedButtonsContainer{
