@@ -17,7 +17,7 @@ $(document).ready(function(){
         url: "https://api.giphy.com/v1/gifs/trending?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&tag=&rating=PG-13",
         method: "GET"
     }).then(function(response){
-        for (var i = 0; i < 10; i++){
+        for (var i = 0; i < response.data.length; i++){
             var tempDiv = $("<div>")
             tempDiv.attr("id", `${i}TrendingDiv`)
             var tempBtnDiv = $("<div>")
@@ -34,6 +34,7 @@ $(document).ready(function(){
             var titleStr = response.data[i].title.split(" ").join("-")
             downBtn.attr("titleData", `${titleStr}`)
             tempDiv.append(tempImg)
+            // tempDiv.append(`<p>${response.data[i].title}</p>`)
             tempDiv.append(downBtn)
             tempDiv.attr("style", "background-color: white; margin: 2px;")
         $(".trendingGiphyContainer").append(tempDiv)
@@ -50,7 +51,7 @@ $(document).ready(function(){
 
     //make random giphy window
     var counter = 0;
-    for (var i = 0; i < 12; i++){
+    for (var i = 0; i < 25; i++){
     counter++;
     $.ajax({
         url: "https://api.giphy.com/v1/gifs/random?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&tag=&rating=PG-13",
@@ -136,7 +137,7 @@ $(document).ready(function(){
     //makeGiphyDiv Function
     function makeGiphyDiv(argument, BannerName){
         $.ajax({
-            url: `http://api.giphy.com/v1/gifs/search?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&q=${argument}&limit=10&offset=0&rating=PG-13&lang=en`,
+            url: `http://api.giphy.com/v1/gifs/search?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&q=${argument}&limit=25&offset=0&rating=PG-13&lang=en`,
         method: "GET"
         }).then(function(response){
     
