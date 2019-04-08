@@ -60,6 +60,15 @@ header{
     height: 180px;
     margin: 2px;
 }
+.polaroid{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px
+
+}
+
 button{
     margin: 10px 0;
     height: 70px;
@@ -85,8 +94,8 @@ button{
 .btnDiv{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     width: 240px;
     padding: 5px;
 }
@@ -94,7 +103,7 @@ button{
 .btnBtn{
     text-align: center;
     background-color: white;
-    color: black;
+    color:  #763626
 }
 
 #giphy-form{

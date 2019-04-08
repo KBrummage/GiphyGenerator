@@ -20,6 +20,7 @@ $(document).ready(function(){
         for (var i = 0; i < response.data.length; i++){
             var tempDiv = $("<div>")
             tempDiv.attr("id", `${i}TrendingDiv`)
+            tempDiv.attr("class", "polaroid")
             var tempBtnDiv = $("<div>")
             tempBtnDiv.attr("class", "btnDiv")
             var tempImg = $("<img>")
@@ -34,6 +35,13 @@ $(document).ready(function(){
             var titleStr = response.data[i].title.split(" ").join("-")
             downBtn.attr("titleData", `${titleStr}`)
             tempDiv.append(tempImg)
+            
+            var strSplt = response.data[i].title.split(" ")
+            var inx = strSplt.indexOf("GIF")
+            if (inx !== -1){
+                tempDiv.append(`<p style="margin: 0px;">${strSplt.slice(0, inx).join(" ")}</p>`)
+                    .append(`<p style="margin: 0px;">${strSplt.slice(inx + 2).join(" ")}`)
+            }
             // tempDiv.append(`<p>${response.data[i].title}</p>`)
             tempDiv.append(downBtn)
             tempDiv.attr("style", "background-color: white; margin: 2px;")
@@ -59,6 +67,7 @@ $(document).ready(function(){
     }).then(function(response){   
         var tempDiv = $("<div>")
         tempDiv.attr("id", `${i}RandomDiv`)
+        tempDiv.attr("class", "polaroid")
         var tempBtnDiv = $("<div>")
         tempBtnDiv.attr("class", "btnDiv")
         var tempImg = $("<img>")
@@ -73,6 +82,12 @@ $(document).ready(function(){
         var titleStr = response.data.title.split(" ").join("-")
         downBtn.attr("titleData", `${titleStr}`)
         tempDiv.append(tempImg)
+        var strSplt = response.data.title.split(" ")
+            var inx = strSplt.indexOf("GIF")
+            if (inx !== -1){
+                tempDiv.append(`<p style="margin: 0px;">${strSplt.slice(0, inx).join(" ")}</p>`)
+                    .append(`<p style="margin: 0px;">${strSplt.slice(inx + 2).join(" ")}`)
+            }
         tempDiv.append(downBtn)
         tempDiv.attr("style", "background-color: white; margin: 2px;")
 
@@ -146,6 +161,7 @@ $(document).ready(function(){
             for (var i = 0; i < response.data.length; i++){
                     var tempDiv = $("<div>")
                     tempDiv.attr("id", `${i}TrendingDiv`)
+                    tempDiv.attr("class", "polaroid")
                     var tempBtnDiv = $("<div>")
                     tempBtnDiv.attr("class", "btnDiv")
                     var tempImg = $("<img>")
@@ -160,6 +176,12 @@ $(document).ready(function(){
                     var titleStr = response.data[i].title.split(" ").join("-")
                     downBtn.attr("titleData", `${titleStr}`)
                     tempDiv.append(tempImg)
+                    var strSplt = response.data[i].title.split(" ")
+            var inx = strSplt.indexOf("GIF")
+            if (inx !== -1){
+                tempDiv.append(`<p style="margin: 0px;">${strSplt.slice(0, inx).join(" ")}</p>`)
+                    .append(`<p style="margin: 0px;">${strSplt.slice(inx + 2).join(" ")}`)
+            }
                     tempDiv.append(downBtn)
                     tempDiv.attr("style", "background-color: white; margin: 2px;")
 
