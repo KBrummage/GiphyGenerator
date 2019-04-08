@@ -2,14 +2,11 @@
 font-family: 'Open Sans', sans-serif;
 text-transform: uppercase;
 letter-spacing: .07em;
-/* border: red solid 1px; */
 }
 
 body{
-    background-color: #1AA6B7;
     display: flex;
     flex: auto;
-
 }
 
 main{
@@ -19,12 +16,9 @@ main{
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    background-color: #1AA6B7;
 }
 
 header{
-    background-color:   #022D41;
-    color: #1AA6B7;
     align-content: center;
     justify-content: center;
     display: flex;
@@ -32,11 +26,16 @@ header{
     top: 0;
     width: 100%;
     margin: auto;
-    border-radius: 14px;
+    /* border-radius: 14px; */
     
     
 }
 
+.container-fluid{
+    margin: 0;
+    min-width: 100vw;
+    min-height: 100vh
+}
 .container{
     margin: 10px auto;
     flex: auto;
@@ -46,7 +45,6 @@ header{
     flex-wrap: wrap;
     /* flex-grow: 10; */
     justify-content: space-evenly;
-    background:#1AA6B7;
     align-content: flex-start;
 
 }
@@ -70,8 +68,6 @@ button{
     height: 70px;
     border-radius: 12px;
     padding: 10px 24px;
-    color: aliceblue!important;
-    background-color: #FE424D;
 }
 
 .buttonContainer{
@@ -81,10 +77,24 @@ button{
     border: solid 2px;
     border-radius: 12px;
     margin: auto;
-    border: 6px solid #DAECF3
 }
 
+.btnDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 240px;
+    /* border-top: 1px solid black;     */
+    margin: 2px;
+    
+    
+}
 
+.btnBtn{
+    padding: 5px;
+    background-color: white;
+    color: black;
+}
 
 #giphy-form{
     display: flex;
@@ -104,7 +114,6 @@ h2{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background: #1AA6B7;
     /* border-radius: 14px;
     border: 6px solid #DAECF3; */
 }
@@ -123,13 +132,12 @@ h2{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background: #DAECF3;
     border-bottom-left-radius: 14px;
     border-bottom-right-radius: 14px;
 }
 
 .imgBox{
-    max-width: 100%;
+    max-width: 100%; 
 }
 .buttonContainerBox{
     display: flex;
@@ -139,7 +147,6 @@ h2{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
-    background: #1AA6B7;
     flex: 0 0 auto;
     top: 0;
 }
@@ -152,19 +159,12 @@ h2{
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: center;
-    background: #DAECF3;
     flex: auto;
-    color: #022D41;
 }
 
-label{
-    background: #DAECF3;
-    color: #022D41;
-}
+
 
 .BtnHeader{
-    background-color:   #022D41;
-    color: #1AA6B7;
     align-content: center;
     justify-content: center;
     display: flex;
@@ -180,7 +180,6 @@ footer{
     flex: auto;
     bottom: 0;
     justify-content: center;
-    background: #022D41;
     width: 85%;
     margin: auto;
 }
@@ -194,17 +193,16 @@ footer{
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background: #1AA6B7;
 }
 
 
 
-.color-primary-0 { color: #18121E }	
-.color-primary-1 { color: #233237 }
-.color-primary-2 { color: #984B43 }
-.color-primary-3 { color: #EAC67A }
+.color0 { color: #90AFC5 }	
+.color1 { color: #336B87 }
+.color2 { color: #2A3132 }
+.color3 { color: #763626 }
 
-.color-primary-0 { color: #FE424D }	
-.color-primary-1 { color: #DAECF3 }
-.color-primary-2 { color: #022D41 }
-.color-primary-3 { color: #1AA6B7 }
+.color0back { background-color: #90AFC5 }	
+.color1back { background-color: #336B87 }
+.color2back { background-color: #2A3132 }
+.color3back { background-color: #763626 }
