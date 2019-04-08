@@ -56,17 +56,27 @@ $(document).ready(function(){
     $.ajax({
         url: "https://api.giphy.com/v1/gifs/random?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&tag=&rating=PG-13",
         method: "GET"
-    }).then(function(response){    
-        $(".randomGiphyContainer").append(`<div id="${i}div">
-                                                <img src="${response.data.images.original.url}" 
-                                                        id="${i}" width="240" height="180" 
-                                                        margin= "2px" border="2px" 
-                                                        class="giphy-embed" 
-                                                        data-still="${response.data.images.original_still.url}" 
-                                                        data-animate="${response.data.images.original.url}" 
-                                                        data-state="animate">
-                                                </img>
-                                            </div>`)
+    }).then(function(response){   
+        var tempDiv = $("<div>")
+        tempDiv.attr("id", `${i}RandomDiv`)
+        var tempBtnDiv = $("<div>")
+        tempBtnDiv.attr("class", "btnDiv")
+        var tempImg = $("<img>")
+        console.log()
+        tempImg.attr("src", response.data.images.original.url)
+        .attr("data-still", response.data.images.original_still.url)
+        .attr("data-animate", response.data.images.original.url)
+        .attr("data-state", "animate")
+        .attr("class", "giphy-embed")
+        var downBtn = $("<div class='btnBtn' type='button'>Download</div>")
+        downBtn.attr("urlData", `${response.data.images.original.url}`)
+        var titleStr = response.data.title.split(" ").join("-")
+        downBtn.attr("titleData", `${titleStr}`)
+        tempDiv.append(tempImg)
+        tempDiv.append(downBtn)
+        tempDiv.attr("style", "background-color: white; margin: 2px;")
+
+        $(".randomGiphyContainer").append(tempDiv)
         
     })
     }
@@ -82,6 +92,7 @@ $(document).ready(function(){
             }
             submission += submissionArray[i];
         }
+
         var dne = true;
         var versionofExistence = 0;
         for(var i = 0; i < selectedGiphs.length; i++){
@@ -101,9 +112,30 @@ $(document).ready(function(){
             method: "GET"
             
             }).then(function(response){
+                
                 $(".giphyContainer").prepend(`<div class="${tempsubmission}${versionofExistence.toString()} container"><header><h2>${submission}</h2></header></div>`);
+                
                 for (var i = 0; i < response.data.length; i++){
-                    $(`.${submission}${versionofExistence.toString()}`).append(`<div id="${submission}div" class="${giphy-embed}"><img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" id="${submission}div" data-animate="${response.data[i].images.original.url}" data-state:"animate"></img></div>`)
+                    var tempDiv = $("<div>")
+                    tempDiv.attr("id", `${i}TrendingDiv`)
+                    var tempBtnDiv = $("<div>")
+                    tempBtnDiv.attr("class", "btnDiv")
+                    var tempImg = $("<img>")
+                    
+                    tempImg.attr("src", response.data[i].images.original.url)
+                    .attr("data-still", response.data[i].images.original_still.url)
+                    .attr("data-animate", response.data[i].images.original.url)
+                    .attr("data-state", "animate")
+                    .attr("class", "giphy-embed")
+                    var downBtn = $("<div class='btnBtn'>Download</div>")
+                    downBtn.attr("urlData", `${response.data[i].images.original.url}`)
+                    var titleStr = response.data[i].title.split(" ").join("-")
+                    downBtn.attr("titleData", `${titleStr}`)
+                    tempDiv.append(tempImg)
+                    tempDiv.append(downBtn)
+                    tempDiv.attr("style", "background-color: white; margin: 2px;")
+
+                    $(`.${tempsubmission}${versionofExistence.toString()}`).append(tempDiv)
                 }
         
             })
@@ -149,7 +181,26 @@ $(document).ready(function(){
             $(".selectedButtonsContainer").prepend(`<button id=${argument}>${BannerName}</button>`);
             $(".giphyContainer").prepend(`<div class="${argument}Container container"><header><h2>${BannerName}</h2></header></div>`);
             for (var i = 0; i < response.data.length; i++){
-                $(`.${argument}Container`).append(`<div id="${argument}${i}div" class="giphy-embed"><img src="${response.data[i].images.original.url}" width="240" height="180" margin= "2px" border="2px" class="giphy-embed" data-still="${response.data[i].images.original_still.url}" id="${argument}${i}" data-animate="${response.data[i].images.original.url}" data-state="animate"></img></div>`)
+                var tempDiv = $("<div>")
+                    tempDiv.attr("id", `${i}TrendingDiv`)
+                    var tempBtnDiv = $("<div>")
+                    tempBtnDiv.attr("class", "btnDiv")
+                    var tempImg = $("<img>")
+                    
+                    tempImg.attr("src", response.data[i].images.original.url)
+                    .attr("data-still", response.data[i].images.original_still.url)
+                    .attr("data-animate", response.data[i].images.original.url)
+                    .attr("data-state", "animate")
+                    .attr("class", "giphy-embed")
+                    var downBtn = $("<div class='btnBtn'>Download</div>")
+                    downBtn.attr("urlData", `${response.data[i].images.original.url}`)
+                    var titleStr = response.data[i].title.split(" ").join("-")
+                    downBtn.attr("titleData", `${titleStr}`)
+                    tempDiv.append(tempImg)
+                    tempDiv.append(downBtn)
+                    tempDiv.attr("style", "background-color: white; margin: 2px;")
+
+                $(`.${argument}Container`).append(tempDiv)
             }
 
         })
