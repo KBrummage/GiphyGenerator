@@ -1,5 +1,17 @@
 # GiphyGenerator
-Uses API to generate personal Giphy Generator
 
--Instead of pulling 10, I chose 12 because it looked better on a laptop.
--Instead of starting still and clicking to stop animation I switched it because it looked better.  This was NOT because I didn't read the instructions carefully, it was just personal preference as no one would want to load a .gif page and not see them in motion.  
+This app allows the user to view trending, random, or personally selected .gifs and download them.
+- Work around from prohibiting cross-platform downloading.
+- Clicking on the image freezes it.
+- Added title if there was one, along with where it's from.
+
+Technology used:
+HTML/CSS
+JavaScript
+Bootstrap
+Ajax
+
+Upcoming changes:
+ - Add local storage to allow users to save to their favorites list.
+ 
+ 
