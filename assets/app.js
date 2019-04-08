@@ -8,7 +8,7 @@ $(document).ready(function(){
 //make preSelected buttons
     for(var i = 0; i < preSelected.length; i++){
         $(".selectedButtonsContainer")
-            .append(`<button id=${preSelected[i]}>${preSelected[i]}</button>`);
+            .append(`<button id=${preSelected[i]} onclick="location.href='#${preSelected[i]}';">${preSelected[i]}</button>`);
     }
 
     //load the trending and random giphs in their own divs.
@@ -17,7 +17,6 @@ $(document).ready(function(){
         url: "https://api.giphy.com/v1/gifs/trending?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&tag=&rating=PG-13",
         method: "GET"
     }).then(function(response){
-        console.log(response.data[0])
         for (var i = 0; i < 10; i++){
             var tempDiv = $("<div>")
             tempDiv.attr("id", `${i}TrendingDiv`)
@@ -105,43 +104,11 @@ $(document).ready(function(){
         if (dne === true){
             selectedGiphs.push(submission);
             makeGiphyDiv(submission, tempsubmission);
-        //doesn't let you make duplicate buttons, but still puts that query on top.
-        } else{
-            $.ajax({
-                url: `https://api.giphy.com/v1/gifs/search?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&q=${submission}&limit=12&offset=0&rating=PG-13&lang=en`,
-            method: "GET"
-            
-            }).then(function(response){
-                
-                $(".giphyContainer").prepend(`<div class="${tempsubmission}${versionofExistence.toString()} container"><header><h2>${submission}</h2></header></div>`);
-                
-                for (var i = 0; i < response.data.length; i++){
-                    var tempDiv = $("<div>")
-                    tempDiv.attr("id", `${i}TrendingDiv`)
-                    var tempBtnDiv = $("<div>")
-                    tempBtnDiv.attr("class", "btnDiv")
-                    var tempImg = $("<img>")
-                    
-                    tempImg.attr("src", response.data[i].images.original.url)
-                    .attr("data-still", response.data[i].images.original_still.url)
-                    .attr("data-animate", response.data[i].images.original.url)
-                    .attr("data-state", "animate")
-                    .attr("class", "giphy-embed")
-                    var downBtn = $("<div class='btnBtn'>Download</div>")
-                    downBtn.attr("urlData", `${response.data[i].images.original.url}`)
-                    var titleStr = response.data[i].title.split(" ").join("-")
-                    downBtn.attr("titleData", `${titleStr}`)
-                    tempDiv.append(tempImg)
-                    tempDiv.append(downBtn)
-                    tempDiv.attr("style", "background-color: white; margin: 2px;")
+        } 
+        console.log(`#${submission}ID`)
 
-                    $(`.${tempsubmission}${versionofExistence.toString()}`).append(tempDiv)
-                }
-        
-            })
-            
-        }
     }
+
     })
     // switch to still image
     $(document).on("click", "img", function(){
@@ -157,17 +124,12 @@ $(document).ready(function(){
         if(dataState === "animate"){
             $(this).attr("src", dataStill);
             $(this).attr("data-state", "still");
-
-            
-            
         }
-
-        
+ 
         else{
             $(this).attr("src", dataAnimate);
             $(this).attr("data-state", "animate");
-        }
-        
+        }      
     })
         
                 
@@ -178,10 +140,10 @@ $(document).ready(function(){
         method: "GET"
         }).then(function(response){
     
-            $(".selectedButtonsContainer").prepend(`<button id=${argument}>${BannerName}</button>`);
-            $(".giphyContainer").prepend(`<div class="${argument}Container container"><header><h2>${BannerName}</h2></header></div>`);
+            $(".selectedButtonsContainer").prepend(`<button id=${argument} onclick="location.href='#${argument}ID';">${BannerName}</button>`);
+            $(".giphyContainer").prepend(`<div id=${argument}ID class="${argument}Container container"><header><h2>${BannerName}</h2></header></div>`);
             for (var i = 0; i < response.data.length; i++){
-                var tempDiv = $("<div>")
+                    var tempDiv = $("<div>")
                     tempDiv.attr("id", `${i}TrendingDiv`)
                     var tempBtnDiv = $("<div>")
                     tempBtnDiv.attr("class", "btnDiv")
@@ -202,8 +164,9 @@ $(document).ready(function(){
 
                 $(`.${argument}Container`).append(tempDiv)
             }
-
+            document.querySelector(`#${argument}ID`).scrollIntoView()
         })
+       
 
 
     }
