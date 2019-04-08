@@ -2,6 +2,8 @@ var preSelected = ["Random", "Trending"];
 var history = [];
 var selectedGiphs = [];
 
+
+
 $(document).ready(function(){
 //make preSelected buttons
     for(var i = 0; i < preSelected.length; i++){
@@ -15,17 +17,12 @@ $(document).ready(function(){
         url: "https://api.giphy.com/v1/gifs/trending?api_key=C9oe21FaZr5JHjfQfF0o175Kjscx8dA2&tag=&rating=PG-13",
         method: "GET"
     }).then(function(response){
-
+        console.log(response.data[0])
         for (var i = 0; i < 10; i++){
             var tempDiv = $("<div>")
             tempDiv.attr("id", `${i}TrendingDiv`)
             var tempBtnDiv = $("<div>")
             tempBtnDiv.attr("class", "btnDiv")
-            var tempA = $("<a>")
-            tempA.attr("target", "_blank")
-                .attr("href", `${response.data[i].images.original.url}`)
-                .attr("style", "text-decoration: none")
-
             var tempImg = $("<img>")
             
             tempImg.attr("src", response.data[i].images.original.url)
@@ -34,15 +31,22 @@ $(document).ready(function(){
             .attr("data-state", "animate")
             .attr("class", "giphy-embed")
             var downBtn = $("<div class='btnBtn'>Download</div>")
-            
-            tempA.append(downBtn)
-            tempBtnDiv.append(tempA)
+            downBtn.attr("urlData", `${response.data[i].images.original.url}`)
+            var titleStr = response.data[i].title.split(" ").join("-")
+            downBtn.attr("titleData", `${titleStr}`)
             tempDiv.append(tempImg)
-            tempDiv.append(tempBtnDiv)
+            tempDiv.append(downBtn)
             tempDiv.attr("style", "background-color: white; margin: 2px;")
         $(".trendingGiphyContainer").append(tempDiv)
 
         }
+    })
+
+    $(document).on("click", ".btnBtn", function(){
+        let urlData = $(this)[0].previousElementSibling.currentSrc
+        let titleData = $(this).attr("titleData")
+        downloadResource(urlData, titleData);
+
     })
 
     //make random giphy window
@@ -153,6 +157,32 @@ $(document).ready(function(){
 
     }
 
+function forceDownload(blob, filename) {
+  var a = document.createElement('a');
+  a.download = filename;
+  a.href = blob;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+
+
+function downloadResource(url, filename) {
+  if (!filename) filename = url.split('\\').pop().split('/').pop();
+  fetch(url, {
+      headers: new Headers({
+        'Origin': location.origin
+      }),
+      mode: 'cors'
+    })
+    .then(response => response.blob())
+    .then(blob => {
+      let blobUrl = window.URL.createObjectURL(blob);
+      forceDownload(blobUrl, filename);
+    })
+    .catch(e => console.error(e));
+}
 
 })
 
